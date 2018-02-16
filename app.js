@@ -1,15 +1,25 @@
 console.log('Starting App.......')
+
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
+const yargs = require('yargs')
+
 const notes = require('./notes')
-var user = os.userInfo();
-// var res = notes.addNote();
-// console.log(res);
-var addNum = notes.addNum(1,2);
-console.log(addNum)
-// template strings are used in place of string concatination
-// fs.appendFile('greetings.txt',`Hello ${user.username}!`,function (err){
-//   if (err) {
-//     console.log('Unable to write to file')
-//   }
-// });
+// Yargs is a utility to access command line arguments efficiently
+const argv = yargs.argv
+console.log('Process',process.argv)
+console.log('Yarg',argv)
+// Accessing the command line arguments through terminal
+var command = process.argv[2];
+
+if (command === 'add') {
+  console.log('Adding new note');
+}else if (command === 'list') {
+   console.log('Listing all notes');
+} else if (command === 'read') {
+   console.log('Reading notes');
+} else if (command === 'write') {
+   console.log('write notes');
+} else {
+  console.log('Command not recognized');
+}
